@@ -19,15 +19,23 @@ Termuxrepo/
 ├── packages/              # Sabhi added .deb files yahan store hoti hain
 │   └── build_1.0.0_all.deb # Build environment package (agent tool)
 ├── scripts/               # Repository management scripts
-│   ├── add_package.sh     # Naya .deb add karne aur index update karne ka script
-│   ├── reindex.py         # Packages db index rebuild karne ka python script
-│   └── setup_apt_source.sh # Local system me repository register karne ka script
-└── packages.md            # Added packages ki auto-updated list (Markdown format)
+│   ├── auto_package.sh    # File find, deb package build, index aur push karne ka master script
+│   ├── add_package.sh     # Naya .deb file add karne aur repo reindex karne ka script
+│   ├── reindex.py         # Packages & Packages.gz indexes generate karne ka Python script
+│   └── setup_apt_source.sh # Repository ko Termux sources me register karne ka script
+└── packages.md            # Added packages ki markdown list (Auto-updated)
 ```
 
----
+## Kaise Use Karein?
 
-## 🛠️ Kaise Use Karein?
+### 🛠️ Method 1: Master Script ke Dwara (Sabse Aasan aur Interactive)
+Naye scripts/files ko direct build karke repo me add aur push karne ke liye master script run karein:
+```bash
+./scripts/auto_package.sh
+```
+*Yeh script aapse details (Package name, filename) puchkar file ko pure system me search karegi, automatic `.deb` banayegi, index refresh karegi aur push karne ke liye pucha jayega.*
+
+---
 
 ### 1. Repository Register Kaise Karein (Sirf Ek Baar)
 
