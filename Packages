@@ -1,0 +1,11 @@
+Package: build
+Version: 1.0.0
+Architecture: all
+Maintainer: Antigravity <antigravity@google.com>
+Depends: nodejs-lts, openjdk-17, openjdk-21, android-sdk, flutter, yarn, git, wget, curl, unzip, zip, tar, clang, make, cmake, ninja, apksigner, aapt2, ncurses-utils
+Description: Fully automated Android Build Environment setup for Termux. Installs all packages and sets up SDK/NDK variables.
+Filename: packages/build_1.0.0_all.deb
+Size: 43656
+MD5sum: f24d59fbd3f38a7b91f79241c4f41311
+SHA1: 39ae68513987cf7a2157bd234b8ba3f9a87666a5
+SHA256: 62f43750a558db4287dc301aa1a68455a92aea40331692db6cb3aea058bb6e15
