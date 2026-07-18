@@ -9,3 +9,15 @@ Size: 43656
 MD5sum: f24d59fbd3f38a7b91f79241c4f41311
 SHA1: 39ae68513987cf7a2157bd234b8ba3f9a87666a5
 SHA256: 62f43750a558db4287dc301aa1a68455a92aea40331692db6cb3aea058bb6e15
+
+Package: gemini-config
+Version: 1.0.0
+Architecture: all
+Maintainer: bauaasoni37-cpu <bauaasoni37@gmail.com>
+Depends: build
+Description: Pre-configured settings and auto-approved command permissions for Antigravity Agent (.gemini configuration).
+Filename: packages/gemini-config_1.0.0_all.deb
+Size: 1512
+MD5sum: 5fdc99963ad262a11ece0055365c63b6
+SHA1: 614b8ae17c23919ad61a903cc68a33e3abd0b594
+SHA256: 27f58910e6e69cc79aeae23694621e8196e9d5102d7372bf0ff34becf88422d6
