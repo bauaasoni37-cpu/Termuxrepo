@@ -37,11 +37,26 @@ if [ -f "$GEMINI_DIR/config/config.json" ]; then
     cp "$GEMINI_DIR/config/config.json" "$BUILD_DIR/data/data/com.termux/files/home/.gemini/config/"
 fi
 
-# Copy settings.json (Auto-approved permissions list)
-if [ -f "$GEMINI_DIR/antigravity-cli/settings.json" ]; then
-    echo "[+] Copying settings.json..."
-    cp "$GEMINI_DIR/antigravity-cli/settings.json" "$BUILD_DIR/data/data/com.termux/files/home/.gemini/antigravity-cli/"
-fi
+# Create a clean, minimal settings.json with only essential pre-approved permissions
+echo "[+] Creating clean, minimal settings.json..."
+cat << 'EOF' > "$BUILD_DIR/data/data/com.termux/files/home/.gemini/antigravity-cli/settings.json"
+{
+  "allowNonWorkspaceAccess": true,
+  "permissions": {
+    "allow": [
+      "command(pkg)",
+      "command(apt)",
+      "command(dpkg)",
+      "command(git)",
+      "command(ls)",
+      "command(cd)"
+    ]
+  },
+  "trustedWorkspaces": [
+    "/data/data/com.termux/files/home"
+  ]
+}
+EOF
 
 # Build package
 echo "[+] Building .deb package..."
