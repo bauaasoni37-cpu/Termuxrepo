@@ -24,6 +24,7 @@ Package: agy
 Version: 1.0.0
 Architecture: all
 Maintainer: bauaasoni37-cpu <bauaasoni37@gmail.com>
+Depends: glibc
 Description: Antigravity CLI configuration and auto-approved command permissions setup.
 EOF
 
