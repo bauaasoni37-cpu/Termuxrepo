@@ -1,50 +1,73 @@
-# My Custom Repo (my_custom_repo)
+# Termux Custom APT Repository (`Termuxrepo`)
 
-Yeh aapka custom Debian/APT repository hai jisme aap apne `.deb` packages ko organize, manage aur `pkg/apt install` ke dwara install kar sakte hain.
+Yeh ek custom Debian/APT repository hai jo Termux environment ke liye banaya gaya hai. Isme aap apne `.deb` packages ko safe rakh sakte hain, organize kar sakte hain aur standard `pkg install` ya `apt install` commands ke dwara direct install kar sakte hain.
 
-## Directory Structure
+## 🚀 Features
+* **One-Click Installer:** Ek simple `curl` command ke dwara kisi bhi target Termux device par repository add karein.
+* **Auto Indexing:** Naya package add karne par `Packages` aur `Packages.gz` index files automatically rebuild hoti hain.
+* **Metadata Extraction:** Package version, architecture aur description automatic extract hokar list ([packages.md](packages.md)) me save ho jati hai.
+* **Security Friendly:** Git remote paths se tokens ko secure rakha jata hai.
+
+---
+
+## 📁 Repository Structure
 ```text
-my_custom_repo/
+Termuxrepo/
 ├── Packages               # APT package index file (Auto-generated)
 ├── Packages.gz            # Gzipped APT package index file (Auto-generated)
-├── install.sh             # Repository ko install/register karne ka setup script
-├── packages/              # Sabhi .deb files yahan save honge
-├── scripts/               # Management helper scripts
-│   ├── add_package.sh     # Naya .deb file add karne aur repo reindex karne ka script
-│   ├── reindex.py         # Packages & Packages.gz indexes generate karne ka Python script
-│   └── setup_apt_source.sh # Repository ko Termux sources me register karne ka script
-└── packages.md            # Sabhi added packages ki markdown list (Auto-updated)
+├── install.sh             # Repository register karne ka universal setup script
+├── packages/              # Sabhi added .deb files yahan store hoti hain
+│   └── build_1.0.0_all.deb # Build environment package (agent tool)
+├── scripts/               # Repository management scripts
+│   ├── add_package.sh     # Naya .deb add karne aur index update karne ka script
+│   ├── reindex.py         # Packages db index rebuild karne ka python script
+│   └── setup_apt_source.sh # Local system me repository register karne ka script
+└── packages.md            # Added packages ki auto-updated list (Markdown format)
 ```
 
-## Kaise Use Karein?
+---
+
+## 🛠️ Kaise Use Karein?
 
 ### 1. Repository Register Kaise Karein (Sirf Ek Baar)
 
 **Method A: Curl ke dwara (Bina manual download kiye direct setup):**
-Agar aapne is repo ko GitHub ya kisi online web server par push kiya hua hai, toh aap is command se kisi bhi Termux machine me install kar sakte hain:
+Kisi bhi device par repository ko set karne ke liye run karein:
 ```bash
-curl -sL https://raw.githubusercontent.com/<YOUR_GITHUB_USERNAME>/my_custom_repo/main/install.sh | bash
+curl -sL https://raw.githubusercontent.com/bauaasoni37-cpu/Termuxrepo/main/install.sh | bash
 ```
 
-**Method B: Local Script ke dwara:**
-Agar aap is directory ke andar hain, toh:
+**Method B: Local Setup (Agar files local directory me hain):**
 ```bash
 ./install.sh
 ```
-*Yeh script automatic repository ko `my_custom_repo.list` source file me register karegi aur `pkg update` run karke database refresh kar degi.*
+*Yeh script automatic repository ko `Termuxrepo.list` source file me register karegi aur `pkg update` run karke database sync karegi.*
 
-### 2. Naya Package Add Karna
-Naya `.deb` package add karne ke liye:
+---
+
+### 2. Naya `.deb` Package Add Karna
+Naya package repository me add karne ke liye:
 ```bash
 ./scripts/add_package.sh /path/to/your/package.deb
 ```
-*Yeh script automatic package ko `packages/` directory me copy karega, markdown index update karega aur `Packages` & `Packages.gz` repo indexes rebuild karega.*
+*Yeh script package ko copy karegi, metadata extract karke **[packages.md](packages.md)** ko update karegi aur `Packages` index generate karegi.*
 
-### 3. Package Install Karna
-Ek baar jab package add ho jaye aur repo sources update ho jayein, toh aap use normal package ki tarah direct install kar sakte hain:
+---
+
+### 3. Package Install Kaise Karein
+Jab repository successfully setup ho jaye aur source register ho jaye:
 ```bash
 pkg install build -y
 # ya
 apt install build -y
 ```
-*(Aap kisi bhi added package ko name se install kar payenge!)*
+
+---
+
+### 4. Updates Ko GitHub Par Push Karna
+Jab bhi aap koi naya package add karein aur use host karna chahein, repository directory me jakar changes ko commit karke push karein:
+```bash
+git add .
+git commit -m "Added new packages to repository"
+git push origin main
+```
