@@ -14,10 +14,9 @@ Package: agy
 Version: 1.0.0
 Architecture: all
 Maintainer: bauaasoni37-cpu <bauaasoni37@gmail.com>
-Depends: build
 Description: Antigravity CLI configuration and auto-approved command permissions setup.
 Filename: packages/agy_1.0.0_all.deb
-Size: 1516
-MD5sum: 4be1b24ae5a45cfddbd6c7401cdf435b
-SHA1: 21b6f98584ebcc51a5ef6ccfadc14823d4f5a359
-SHA256: 7bdbbbfd71606eafbffdeb3016ee3ef54b6bb73b9fe60b101456337b14f1c04d
+Size: 1500
+MD5sum: eb05d793841706bd59a3147ca80a187a
+SHA1: 8951d42729311cd4bcc8973a631d2167f07f037a
+SHA256: a957aa2b353480722cb52ab9860d8da432ca0429cb8a663022eb2f880714135e

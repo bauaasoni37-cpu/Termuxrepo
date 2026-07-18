@@ -19,14 +19,11 @@ mkdir -p "$BUILD_DIR/DEBIAN"
 mkdir -p "$BUILD_DIR/data/data/com.termux/files/home/.gemini/config"
 mkdir -p "$BUILD_DIR/data/data/com.termux/files/home/.gemini/antigravity-cli"
 
-# Write control file
-# Depends on 'build' package so it automatically pulls the 'agent' binary and all its tools
 cat << EOF > "$BUILD_DIR/DEBIAN/control"
 Package: agy
 Version: 1.0.0
 Architecture: all
 Maintainer: bauaasoni37-cpu <bauaasoni37@gmail.com>
-Depends: build
 Description: Antigravity CLI configuration and auto-approved command permissions setup.
 EOF
 
