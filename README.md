@@ -17,9 +17,11 @@ Termuxrepo/
 ├── Packages.gz            # Gzipped APT package index file (Auto-generated)
 ├── install.sh             # Repository register karne ka universal setup script
 ├── packages/              # Sabhi added .deb files yahan store hoti hain
-│   └── build_1.0.0_all.deb # Build environment package (agent tool)
+│   ├── build_1.0.0_all.deb # Build environment package (agent tool)
+│   └── agy_1.0.0_all.deb  # Antigravity CLI config aur permission setup package
 ├── scripts/               # Repository management scripts
 │   ├── auto_package.sh    # File find, deb package build, index aur push karne ka master script
+│   ├── package_agy.sh     # .gemini folder ko secure 'agy' deb me package karne ka script
 │   ├── add_package.sh     # Naya .deb file add karne aur repo reindex karne ka script
 │   ├── reindex.py         # Packages & Packages.gz indexes generate karne ka Python script
 │   └── setup_apt_source.sh # Repository ko Termux sources me register karne ka script
@@ -63,11 +65,17 @@ Naya package repository me add karne ke liye:
 ---
 
 ### 3. Package Install Kaise Karein
-Jab repository successfully setup ho jaye aur source register ho jaye:
+Jab repository successfully setup ho jaye:
+
+**Agy (Antigravity Config) aur complete Build environment ek sath install karne ke liye:**
+```bash
+pkg install agy -y
+```
+*(Yeh command `agy` config install karegi aur iski dependency **`build`** (Agent + Flutter/Android SDK environment) ko automatically download aur install kar degi!)*
+
+**Sirf Build environment (बिना config settings के) install karne ke liye:**
 ```bash
 pkg install build -y
-# ya
-apt install build -y
 ```
 
 ---
