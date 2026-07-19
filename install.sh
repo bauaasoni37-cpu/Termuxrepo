@@ -112,9 +112,9 @@ elif [ "$SETUP_MODE" = "2" ]; then
     echo -e "${YELLOW}➔ Running Proot-Distro Setup Mode...${NC}\n"
     
     # Step 1: Install proot-distro and QEMU translation in Termux if not present
-    print_status "Checking and installing proot-distro & qemu-user-static in Termux..."
+    print_status "Checking and installing proot-distro & qemu-user-x86-64 in Termux..."
     pkg update -y &>/dev/null || true
-    pkg install proot-distro qemu-user-static -y
+    pkg install proot-distro qemu-user-x86-64 -y
     print_success_step "Termux native dependencies configured."
 
     # Step 2: Install Ubuntu inside proot-distro
