@@ -14,10 +14,10 @@ Package: build
 Version: 1.0.0
 Architecture: all
 Maintainer: Antigravity <antigravity@google.com>
-Depends: git, wget, curl, unzip, zip, tar, clang, make, cmake, ninja, openjdk-17 | openjdk-17-jdk | openjdk-17-jre, openjdk-21 | openjdk-21-jdk | openjdk-21-jre, nodejs | nodejs-lts, android-sdk | openjdk-17, flutter | openjdk-17, apksigner | openjdk-17, aapt2 | openjdk-17, ncurses-utils | libncurses5-dev | libncurses-dev
+Depends: git, wget, curl, unzip, zip, tar, clang, make, cmake, ninja | ninja-build, openjdk-17 | openjdk-17-jdk | openjdk-17-jre, openjdk-21 | openjdk-21-jdk | openjdk-21-jre, nodejs | nodejs-lts, android-sdk | openjdk-17-jdk, flutter | openjdk-17-jdk, apksigner | openjdk-17-jdk, aapt2 | openjdk-17-jdk, ncurses-utils | libncurses5-dev | libncurses-dev
 Description: Fully automated Android Build Environment setup for Termux. Installs all packages and sets up SDK/NDK variables.
 Filename: packages/build_1.0.0_all.deb
-Size: 49528
-MD5sum: 36802dd130ddc20c271345fe5f5fdff2
-SHA1: 007284133311325e95703afc7f7a34b48f5f3701
-SHA256: f1885fdce410750f4ce4472b8171a26cd4e6686de9dda645bc64de400ae09227
+Size: 49724
+MD5sum: 735cfb57fa50fb36a16f7a0d62b0e75a
+SHA1: 44825d8dce8757e451d3d7aecf652325cf65f4cd
+SHA256: 43671a8af931360a935cea1c03d85f4cb3b75948e1fa6411b68172a659c24315
