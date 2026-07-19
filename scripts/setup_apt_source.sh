@@ -4,9 +4,9 @@
 set -e
 
 # Define paths
-REPO_DIR="/data/data/com.termux/files/home/my_custom_repo"
+REPO_DIR="/data/data/com.termux/files/home/Termuxrepo"
 APT_SOURCES_DIR="/data/data/com.termux/files/usr/etc/apt/sources.list.d"
-SOURCE_FILE="$APT_SOURCES_DIR/my_custom_repo.list"
+SOURCE_FILE="$APT_SOURCES_DIR/Termuxrepo.list"
 
 echo "Configuring local APT repository..."
 

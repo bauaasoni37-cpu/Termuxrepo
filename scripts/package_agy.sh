@@ -3,7 +3,7 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
-REPO_DIR="/data/data/com.termux/files/home/my_custom_repo"
+REPO_DIR="/data/data/com.termux/files/home/Termuxrepo"
 GEMINI_DIR="/data/data/com.termux/files/home/.gemini"
 BUILD_DIR="$REPO_DIR/agy_1.0.0_all"
 

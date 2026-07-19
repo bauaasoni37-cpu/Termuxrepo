@@ -4,7 +4,7 @@
 set -e
 
 # Configuration
-REPO_NAME="my_custom_repo"
+REPO_NAME="Termuxrepo"
 # Try to auto-detect github username if this is a git repository
 GITHUB_USER="bauaasoni37-cpu" # Default backup username based on environment
 
