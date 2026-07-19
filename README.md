@@ -1,89 +1,125 @@
-# Termux Custom APT Repository (`Termuxrepo`)
+<div align="center">
+  <a href="https://bauaasoni37-cpu.github.io/Termuxrepo/">
+    <img alt="Termuxrepo" height="180" src="img/termuxrepo_logo.jpg" style="border-radius: 90px; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);">
+    <h1>Termuxrepo APT Repository</h1>
+  </a>
+  <p><b>🔓 Custom Debian/APT Repository for Termux Environment</b></p>
 
-Yeh ek custom Debian/APT repository hai jo Termux environment ke liye banaya gaya hai. Isme aap apne `.deb` packages ko safe rakh sakte hain, organize kar sakte hain aur standard `pkg install` ya `apt install` commands ke dwara direct install kar sakte hain.
+  <div>
+    <a href="https://github.com/bauaasoni37-cpu/Termuxrepo/stargazers">
+      <img src="https://img.shields.io/github/stars/bauaasoni37-cpu/Termuxrepo?style=for-the-badge&logo=github&color=ffd700&labelColor=0d1117" alt="GitHub Stars">
+    </a>
+    <a href="https://github.com/bauaasoni37-cpu/Termuxrepo/blob/main/LICENSE">
+      <img src="https://img.shields.io/badge/License-BSD_3--Clause-blue?style=for-the-badge&logo=opensourceinitiative" alt="License">
+    </a>
+    <a href="https://github.com/bauaasoni37-cpu/Termuxrepo/issues">
+      <img src="https://img.shields.io/github/issues/bauaasoni37-cpu/Termuxrepo?style=for-the-badge&logo=github&color=orange&labelColor=0d1117" alt="GitHub Issues">
+    </a>
+  </div>
+</div>
 
-## 🚀 Features
-* **One-Click Installer:** Ek simple `curl` command ke dwara kisi bhi target Termux device par repository add karein.
-* **Auto Indexing:** Naya package add karne par `Packages` aur `Packages.gz` index files automatically rebuild hoti hain.
-* **Metadata Extraction:** Package version, architecture aur description automatic extract hokar list ([packages.md](packages.md)) me save ho jati hai.
-* **Security Friendly:** Git remote paths se tokens ko secure rakha jata hai.
+## 📖 Table of Contents
+
+- [Project Overview](#-project-overview)
+- [Prerequisites](#-prerequisites)
+- [Quick Installation](#-quick-installation)
+- [Featured Packages](#-featured-packages)
+- [Why Open Source?](#-why-open-source)
+- [Repository Structure](#-repository-structure)
+- [Frequently Asked Questions](#-frequently-asked-questions)
+
+---
+
+## 📋 Prerequisites
+
+Before using Termuxrepo, ensure your environment meets these requirements:
+
+- **Termux** installed on your Android device (Android 7+)
+- **Working internet connection** to add the repository and download packages
+- **No root required** to install or run any of these packages
+
+---
+
+## 🔍 Project Overview
+
+**Termuxrepo** is a custom Debian/APT repository tailored specifically for the Termux environment. It provides a secure, lightweight, and structured setup to index and host custom `.deb` packages.
+
+This repository allows you to easily register and install specialized tools (such as build environments and Antigravity configs) using the standard `pkg install` or `apt install` workflow.
+
+> [!NOTE]
+> All packages in this repository are compiled natively and index automatically. Whenever a package is updated, repository index metadata is updated on-the-fly.
+
+---
+
+## 🚀 Quick Installation
+
+Adding Termuxrepo to your system is extremely seamless. Just run the following one-liner curl command in your Termux shell:
+
+```bash
+# Add custom repository
+curl -sL https://raw.githubusercontent.com/bauaasoni37-cpu/Termuxrepo/main/install.sh | bash
+```
+
+Once successfully installed, update your package lists and install any package:
+
+```bash
+# Update APT source database
+pkg update
+
+# Install agy configuration package
+pkg install agy -y
+```
+
+> [!TIP]
+> After setting up, you can search for packages inside this repository using `pkg search <package-name>`.
+
+---
+
+## ✨ Featured Packages
+
+We host custom packages compiled to make your development lifecycle smoother:
+
+<div align="center">
+
+| Package | Version | Description |
+| :--- | :--- | :--- |
+| **agy** | `1.0.0` | Antigravity CLI config and auto-approved command permissions setup. |
+| **build** | `1.0.0` | Build environment and compilation tools setup. |
+
+</div>
+
+---
+
+## 🔍 Why Open Source?
+
+Security is paramount. We believe you should see exactly what runs on your environment before running it. 
+* All repository configurations are completely open-source.
+* Scripts used for indexing, packaging (`scripts/`), and setups are transparent.
+* Easily customizable for creating your own package repository.
 
 ---
 
 ## 📁 Repository Structure
+
 ```text
 Termuxrepo/
+├── index.html             # Premium repository landing page (GitHub Pages)
 ├── Packages               # APT package index file (Auto-generated)
 ├── Packages.gz            # Gzipped APT package index file (Auto-generated)
-├── install.sh             # Repository register karne ka universal setup script
-├── packages/              # Sabhi added .deb files yahan store hoti hain
-│   ├── build_1.0.0_all.deb # Build environment package (agent tool)
-│   └── agy_1.0.0_all.deb  # Antigravity CLI config aur permission setup package
-├── scripts/               # Repository management scripts
-│   ├── auto_package.sh    # File find, deb package build, index aur push karne ka master script
-│   ├── package_agy.sh     # .gemini folder ko secure 'agy' deb me package karne ka script
-│   ├── add_package.sh     # Naya .deb file add karne aur repo reindex karne ka script
-│   ├── reindex.py         # Packages & Packages.gz indexes generate karne ka Python script
-│   └── setup_apt_source.sh # Repository ko Termux sources me register karne ka script
-└── packages.md            # Added packages ki markdown list (Auto-updated)
-```
-
-## Kaise Use Karein?
-
-### 🛠️ Method 1: Master Script ke Dwara (Sabse Aasan aur Interactive)
-Naye scripts/files ko direct build karke repo me add aur push karne ke liye master script run karein:
-```bash
-./scripts/auto_package.sh
-```
-*Yeh script aapse details (Package name, filename) puchkar file ko pure system me search karegi, automatic `.deb` banayegi, index refresh karegi aur push karne ke liye pucha jayega.*
-
----
-
-### 1. Repository Register Kaise Karein (Sirf Ek Baar)
-
-**Method A: Curl ke dwara (Bina manual download kiye direct setup):**
-Kisi bhi device par repository ko set karne ke liye run karein:
-```bash
-curl -sL https://raw.githubusercontent.com/bauaasoni37-cpu/Termuxrepo/main/install.sh | bash
-```
-
-**Method B: Local Setup (Agar files local directory me hain):**
-```bash
-./install.sh
-```
-*Yeh script automatic repository ko `Termuxrepo.list` source file me register karegi aur `pkg update` run karke database sync karegi.*
-
----
-
-### 2. Naya `.deb` Package Add Karna
-Naya package repository me add karne ke liye:
-```bash
-./scripts/add_package.sh /path/to/your/package.deb
-```
-*Yeh script package ko copy karegi, metadata extract karke **[packages.md](packages.md)** ko update karegi aur `Packages` index generate karegi.*
-
----
-
-### 3. Package Install Kaise Karein
-Jab repository successfully setup ho jaye:
-
-**Agy (Antigravity Config) aur complete Build environment ek sath install karne ke liye:**
-```bash
-pkg install agy -y
-```
-*(Yeh command `agy` config install karegi aur iski dependency **`build`** (Agent + Flutter/Android SDK environment) ko automatically download aur install kar degi!)*
-
-**Sirf Build environment (बिना config settings के) install karne ke liye:**
-```bash
-pkg install build -y
+├── install.sh             # Repository register setup script
+├── packages/              # Subdirectory containing all hosted .deb files
+│   ├── build_1.0.0_all.deb
+│   └── agy_1.0.0_all.deb
+├── scripts/               # Management scripts for packaging and indexing
+└── packages.md            # Auto-updated list of all hosted packages
 ```
 
 ---
 
-### 4. Updates Ko GitHub Par Push Karna
-Jab bhi aap koi naya package add karein aur use host karna chahein, repository directory me jakar changes ko commit karke push karein:
-```bash
-git add .
-git commit -m "Added new packages to repository"
-git push origin main
-```
+## 💬 Frequently Asked Questions
+
+#### Q: Is root access required?
+A: No! You don't need root access to add this repository or install its packages.
+
+#### Q: How can I host my own packages here?
+A: Put your `.deb` files in `packages/` directory and run `./scripts/auto_package.sh` to package, index, and prepare updates for pushing.
