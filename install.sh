@@ -134,8 +134,10 @@ elif [ "$SETUP_MODE" = "2" ]; then
     # Online repo URL
     ONLINE_URL="https://$GITHUB_USER.github.io/$REPO_NAME"
     
-    # Run setup inside the Ubuntu container (only register repo and apt update)
+    # Run setup inside the Ubuntu container (install ca-certificates first to allow HTTPS, then register repo)
     proot-distro login ubuntu -- bash -c "
+        apt-get update && \
+        apt-get install -y ca-certificates && \
         echo 'deb [trusted=yes] $ONLINE_URL ./' > /etc/apt/sources.list.d/Termuxrepo.list && \
         apt-get update
     "
