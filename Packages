@@ -1,15 +1,3 @@
-Package: build
-Version: 1.0.0
-Architecture: all
-Maintainer: Antigravity <antigravity@google.com>
-Depends: nodejs-lts, openjdk-17, openjdk-21, android-sdk, flutter, yarn, git, wget, curl, unzip, zip, tar, clang, make, cmake, ninja, apksigner, aapt2, ncurses-utils
-Description: Fully automated Android Build Environment setup for Termux. Installs all packages and sets up SDK/NDK variables.
-Filename: packages/build_1.0.0_all.deb
-Size: 43656
-MD5sum: f24d59fbd3f38a7b91f79241c4f41311
-SHA1: 39ae68513987cf7a2157bd234b8ba3f9a87666a5
-SHA256: 62f43750a558db4287dc301aa1a68455a92aea40331692db6cb3aea058bb6e15
-
 Package: agy
 Version: 1.0.0
 Architecture: all
@@ -21,3 +9,15 @@ Size: 1060
 MD5sum: 714d7a90a93d86021055ca9c573b9b03
 SHA1: 46c6b822d053d528ff06a83b23e6c4e69a24cde2
 SHA256: a4b1d999c3d5dd36cfd7c8503abe7ac9bf4c1a7f55573c728a61d91cc4253bc6
+
+Package: build
+Version: 1.0.0
+Architecture: all
+Maintainer: Antigravity <antigravity@google.com>
+Depends: nodejs-lts, openjdk-17, openjdk-21, android-sdk, flutter, yarn, git, wget, curl, unzip, zip, tar, clang, make, cmake, ninja, apksigner, aapt2, ncurses-utils
+Description: Fully automated Android Build Environment setup for Termux. Installs all packages and sets up SDK/NDK variables.
+Filename: packages/build_1.0.0_all.deb
+Size: 48336
+MD5sum: c8fccafb042e83e0a878fe97aed9ba75
+SHA1: 0ef0b6155f1a7e45e4af3be177fc05c97fb425e9
+SHA256: f3f151b73928dc767d97de59fdfa13dd3fcbfff89fcef1a90021409d874d286e
