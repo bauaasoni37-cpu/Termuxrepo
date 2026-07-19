@@ -143,6 +143,17 @@ elif [ "$SETUP_MODE" = "2" ]; then
     echo -e "${BLUE}--------------------------------------------------${NC}"
     print_success_step "Ubuntu APT custom repository configured."
 
+    # Step 4: Create shared symlinks between Termux home and container root home
+    print_status "Creating shared directories access symlinks..."
+    
+    # Symlink from Termux home to Container root home
+    ln -sf /data/data/com.termux/files/usr/var/lib/proot-distro/installed-distros/ubuntu/root /data/data/com.termux/files/home/ubuntu-home
+    print_success_step "Created symlink in Termux home: ~/ubuntu-home -> Ubuntu root home"
+    
+    # Symlink from Container root home to Termux home
+    proot-distro login ubuntu -- bash -c "ln -sf /data/data/com.termux/files/home /root/termux-home"
+    print_success_step "Created symlink inside Ubuntu container: /root/termux-home -> Termux home"
+
     # Success Banner
     echo ""
     echo -e "${GREEN}${BOLD}==================================================${NC}"
