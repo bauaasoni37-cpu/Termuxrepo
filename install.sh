@@ -134,16 +134,15 @@ elif [ "$SETUP_MODE" = "2" ]; then
     # Online repo URL
     ONLINE_URL="https://$GITHUB_USER.github.io/$REPO_NAME"
     
-    # Run setup inside the Ubuntu container (install ca-certificates first to allow HTTPS, then register repo)
+    # Run setup inside the Ubuntu container (install ca-certificates first, then register repo)
     proot-distro login ubuntu -- bash -c "
         apt-get update && \
         apt-get install -y ca-certificates && \
-        echo 'deb [trusted=yes] $ONLINE_URL ./' > /etc/apt/sources.list.d/Termuxrepo.list && \
-        apt-get update
+        echo 'deb [trusted=yes] $ONLINE_URL ./' > /etc/apt/sources.list.d/Termuxrepo.list
     "
 
     echo -e "${BLUE}--------------------------------------------------${NC}"
-    print_success_step "Ubuntu APT custom repository configured."
+    print_success_step "Ubuntu APT custom repository registered."
 
     # Step 4: Create shared symlinks between Termux home and container root home
     print_status "Creating shared directories access symlinks..."
@@ -155,6 +154,13 @@ elif [ "$SETUP_MODE" = "2" ]; then
     # Symlink from Container root home to Termux home
     proot-distro login ubuntu -- bash -c "ln -sf /data/data/com.termux/files/home /root/termux-home"
     print_success_step "Created symlink inside Ubuntu container: /root/termux-home -> Termux home"
+
+    # Step 5: Final APT database sync inside container
+    print_status "Syncing repository database inside container..."
+    echo -e "${BLUE}--------------------------------------------------${NC}"
+    proot-distro login ubuntu -- bash -c "apt-get update"
+    echo -e "${BLUE}--------------------------------------------------${NC}"
+    print_success_step "Container APT package list synced."
 
     # Success Banner
     echo ""
