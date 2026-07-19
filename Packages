@@ -17,7 +17,7 @@ Maintainer: Antigravity <antigravity@google.com>
 Depends: nodejs-lts, openjdk-17, openjdk-21, android-sdk, flutter, yarn, git, wget, curl, unzip, zip, tar, clang, make, cmake, ninja, apksigner, aapt2, ncurses-utils
 Description: Fully automated Android Build Environment setup for Termux. Installs all packages and sets up SDK/NDK variables.
 Filename: packages/build_1.0.0_all.deb
-Size: 48336
-MD5sum: c8fccafb042e83e0a878fe97aed9ba75
-SHA1: 0ef0b6155f1a7e45e4af3be177fc05c97fb425e9
-SHA256: f3f151b73928dc767d97de59fdfa13dd3fcbfff89fcef1a90021409d874d286e
+Size: 48480
+MD5sum: 0b5b32f8c0162e8030d8f346547c61a6
+SHA1: ddff8ea521e93189c0c77da8e1922c7fe1567ccd
+SHA256: f03acc5cc441cb1373f670f503c58aceef5917003d08200aeba600d30e8d847c
