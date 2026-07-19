@@ -53,7 +53,8 @@ echo -e "${BOLD}Choose Environment Setup Option:${NC}"
 echo -e "  ${CYAN}1)${NC} Termux Native Environment (Direct Setup)"
 echo -e "  ${CYAN}2)${NC} Proot-Distro Container Environment (Ubuntu + QEMU + Android SDK/NDK/Flutter)"
 echo ""
-read -p "$(echo -e "${YELLOW}[?] Select setup (1 or 2) [1]: ${NC}")" SETUP_MODE
+read -p "$(echo -e "${YELLOW}[?] Select setup (1 or 2) [1]: ${NC}")" SETUP_MODE < /dev/tty
+SETUP_MODE=$(echo "$SETUP_MODE" | tr -d '\r')
 SETUP_MODE="${SETUP_MODE:-1}"
 
 if [ "$SETUP_MODE" = "1" ]; then
