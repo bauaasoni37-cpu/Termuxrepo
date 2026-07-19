@@ -127,34 +127,33 @@ elif [ "$SETUP_MODE" = "2" ]; then
     fi
     print_success_step "Ubuntu container installed in proot-distro."
 
-    # Step 3: Configure repository & install build environment inside Ubuntu container
-    print_status "Configuring APT and installing SDK environment inside Ubuntu container..."
+    # Step 3: Configure repository inside Ubuntu container
+    print_status "Configuring APT custom repository inside Ubuntu container..."
     echo -e "${BLUE}--------------------------------------------------${NC}"
     
     # Online repo URL
     ONLINE_URL="https://$GITHUB_USER.github.io/$REPO_NAME"
     
-    # Run setup inside the Ubuntu container
+    # Run setup inside the Ubuntu container (only register repo and apt update)
     proot-distro login ubuntu -- bash -c "
         echo 'deb [trusted=yes] $ONLINE_URL ./' > /etc/apt/sources.list.d/Termuxrepo.list && \
-        apt-get update && \
-        apt-get install build -y
+        apt-get update
     "
 
     echo -e "${BLUE}--------------------------------------------------${NC}"
-    print_success_step "Proot environment fully configured."
+    print_success_step "Ubuntu APT custom repository configured."
 
     # Success Banner
     echo ""
     echo -e "${GREEN}${BOLD}==================================================${NC}"
-    echo -e "${BG_GREEN}${TEXT_BLACK}${BOLD}   ✔  SUCCESS: PROOT DISTRO SETUP COMPLETED       ${NC}"
+    echo -e "${BG_GREEN}${TEXT_BLACK}${BOLD}   ✔  SUCCESS: PROOT DISTRO REPO SETUP COMPLETED  ${NC}"
     echo -e "${GREEN}${BOLD}==================================================${NC}"
     echo ""
-    echo -e "${BOLD}Ubuntu proot container start karne ke liye run karein:${NC}"
-    echo -e "    ➔ ${YELLOW}proot-distro login ubuntu${NC}"
-    echo ""
-    echo -e "${BOLD}Container ke andar aap directly call kar sakte hain:${NC}"
-    echo -e "    ➔ ${YELLOW}kotlin-create${NC}   (Create modern login projects)"
+    echo -e "${BOLD}Ab aap Ubuntu proot container start karke setup compile kar sakte hain:${NC}"
+    echo -e "    1. Container me enter karein:"
+    echo -e "       ➔ ${YELLOW}proot-distro login ubuntu${NC}"
+    echo -e "    2. Environment tools aur SDKs install karne ke liye run karein:"
+    echo -e "       ➔ ${YELLOW}apt install build -y${NC}"
     echo ""
     echo -e "${CYAN}${BOLD}Happy Android Coding inside Container! 🚀🤖${NC}"
     echo -e "${GREEN}${BOLD}==================================================${NC}"
